@@ -317,7 +317,7 @@ func loadKernelModules(kind, prefix string) error {
 		}
 		defer f.Close()
 		params := strings.Join(fields[2:], " ")
-		if err := unix.FinitModule(int(f.Fd()), params, 0); err != nil {
+		if err := unix.FinitModule(int(f.Fd()), params, 4); err != nil {
 			if !os.IsExist(err) {
 				return fmt.Errorf("init loadKernelModule(%q) failed: %v", fields[1], err)
 			}
